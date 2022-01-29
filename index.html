@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="background.png">
+    <title>Water polo pitch</title>
+  </head>
+  <body>    
+    <div id="blue1" style="top: 632px; left: 985px;">
+      <div id="blue1header"><img src="/Blue/1 blue.png" width="32" height="32"></div>
+    </div>
+    <div id="blue2" style="top: 806px; left: 985px;">
+      <div id="blue2header"><img src="Blue/2 blue.png" width="32" height="32"></div>
+    </div>
+    <div id="blue3" style="top: 450px; left: 1415px;">
+      <div id="blue3header"><img src="Blue/3 blue.png" width="32" height="32"></div>
+    </div>
+    <div id="blue4" style="top: 275px; left: 985px;">
+      <div id="blue4header"><img src="Blue/4 blue.png" width="32" height="32"></div>
+    </div>
+    <div id="blue5" style="top: 106px; left: 985px;">
+      <div id="blue5header"><img src="Blue/5 blue.png" width="32" height="32"></div>
+    </div>
+    <div id="blue6" style="top: 450px; left: 985px;">
+      <div id="blue6header"><img src="Blue/6 blue .png" width="32" height="32"></div>
+    </div>
+    <div id="blue7" style="top: 448px; left: 1850px;">
+      <div id="blue7header"><img src="Blue/7 blue red.png" width="32" height="32"></div>
+    </div>
+    <div id="white1" style="top: 806px; left: 900px;">
+      <div id="white1header"><img src="/white/1white.png" width="32" height="32"></div>
+    </div>
+    <div id="white2" style="top: 632px; left: 900px;">
+      <div id="white2header"><img src="white/2white.png" width="32" height="32"></div>
+    </div>
+    <div id="white3" style="top: 450px; left: 500px;">
+      <div id="white3header"><img src="white/3white.png" width="32" height="32"></div>
+    </div>
+    <div id="white4" style="top: 106px; left: 900px;">
+      <div id="white4header"><img src="white/4white.png" width="32" height="32"></div>
+    </div>
+    <div id="white5" style="top: 275px; left: 900px;">
+      <div id="white5header"><img src="white/5white.png" width="32" height="32"></div>
+    </div>
+    <div id="white6" style="top: 450px; left: 900px;">
+      <div id="white6header"><img src="white/6white.png" width="32" height="32"></div>
+    </div>
+    <div id="white7" style="top: 448px; left: 50px;">
+      <div id="white7header"><img src="white/7whitered.png" width="32" height="32"></div>
+    </div>
+    <script>
+    dragElement(document.getElementById("blue1"));
+    dragElement(document.getElementById("blue2"));
+    dragElement(document.getElementById("blue3"));
+    dragElement(document.getElementById("blue4"));
+    dragElement(document.getElementById("blue5"));
+    dragElement(document.getElementById("blue6"));
+    dragElement(document.getElementById("blue7"));
+    dragElement(document.getElementById("white1"));
+    dragElement(document.getElementById("white2"));
+    dragElement(document.getElementById("white3"));
+    dragElement(document.getElementById("white4"));
+    dragElement(document.getElementById("white5"));
+    dragElement(document.getElementById("white6"));
+    dragElement(document.getElementById("white7"));
+    function dragElement(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      if (document.getElementById(elmnt.id + "header")) {
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+      } else {
+        elmnt.onmousedown = dragMouseDown;
+      }
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+      }
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      }
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+    </script>
+    </body>
+</html>
